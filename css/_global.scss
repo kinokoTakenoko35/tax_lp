@@ -1,4 +1,28 @@
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: fot-tsukuardgothic-std, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   background-color: #c4cceb;
+}
+
+/*  clamp()で上限／下限の設定 */
+main,
+section {
+  width: clamp(335px, 70vw, 1004px);
+  margin: 0 auto;
+}
+
+/* 第一引数で基準となる画面幅のフォントサイズ、第二引数で基準となる画面幅を入力 */
+// body {
+//   font-size: calc(100vw / 50);
+// }
+
+span,
+h2,
+.articl-titel {
+  font-size: calc(100vw / 15);
+}
+
+.bill-icon {
+  width: calc(100vw / 10);
 }

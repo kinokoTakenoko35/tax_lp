@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -134,8 +135,28 @@ table {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: fot-tsukuardgothic-std, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   background-color: #c4cceb;
+}
+
+/*  clamp()で上限／下限の設定 */
+main,
+section {
+  width: clamp(335px, 70vw, 1004px);
+  margin: 0 auto;
+}
+
+/* 第一引数で基準となる画面幅のフォントサイズ、第二引数で基準となる画面幅を入力 */
+span,
+h2,
+.articl-titel {
+  font-size: calc(100vw / 15);
+}
+
+.bill-icon {
+  width: calc(100vw / 10);
 }
 
 main {
@@ -144,19 +165,45 @@ main {
   font-style: normal;
 }
 
+main .logo-container {
+  margin-bottom: 4rem;
+}
+
 main .title-text {
-  font-size: 80px;
+  font-size: clamp(1.625rem, 0.2265rem + 5.9669vw, 5rem);
 }
 
 main .title-text span {
   display: inline-block;
   background-color: white;
+  padding: 50px;
 }
 
-.sub-title {
+main .title-text span:nth-child(1) {
+  margin-bottom: 26px;
+}
+
+main .down-arrow {
+  position: absolute;
+  left: 45%;
+  margin-top: 3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .title-text span {
+    padding: 20px !important;
+  }
+}
+
+.hero {
+  padding-top: 30%;
+}
+
+.hero .sub-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 2rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -164,28 +211,304 @@ main .title-text span {
       -ms-flex-align: center;
           align-items: center;
   font-size: 50px;
+  font-family: "Montserrat", sans-serif;
 }
 
-.score-container {
-  border: solid white;
+.hero .score-container {
+  border: 0.6rem solid white;
   border-radius: 15px;
+  padding: 4rem 2rem;
 }
 
-article h3 {
-  font-size: 80px;
+.hero .score-container .score {
+  /*line-heightで疑似要素にかぶらないようにする*/
+  line-height: 1.2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
-article::after, article::before {
+.hero .score-container .score::after {
   content: "";
+  display: block;
+  position: absolute;
+  /*border を斜めにする*/
+  -webkit-transform: skewX(-45deg);
+          transform: skewX(-45deg);
+  background-image: repeating-linear-gradient(-90deg, #707070, #707070 2px, transparent 0, transparent 6px);
+  width: 44%;
+  height: 2%;
+}
+
+.hero .score-container .score .numerical {
+  /*文字列補間（CSS変数と同様）を使用して単位をMIXして使用できるようにする*/
+  font-size: clamp(5rem, 2.9282rem + 8.8398vw, 10rem);
+}
+
+.hero .score-container .score .point {
+  font-size: clamp(3.125rem, 1.8301rem + 5.5249vw, 6.25rem);
+}
+
+.hero .score-container .discription {
+  margin: 0 auto;
+  width: 90%;
+  line-height: 2rem;
+}
+
+.hero article {
+  margin: 8rem 0;
+}
+
+.hero article .articl-titel {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.hero article .book-info {
+  display: -ms-grid;
+  display: grid;
+  /* 2:1 の割合でレイアウト */
+  -ms-grid-columns: 1fr 2fr;
+      grid-template-columns: 1fr 2fr;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.hero article .book-info .book-img {
+  grid-row: span 3;
+}
+
+.hero article .book-info .book-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-self: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  z-index: -1;
+}
+
+.hero article .book-info .book-img img {
+  height: 100%;
+  width: 100%;
+}
+
+.hero article .book-info .book-img::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: -1;
+}
+
+.hero article .book-info .book-discription {
+  grid-row: span 2;
+  margin: 0 2rem;
+}
+
+.hero article button {
+  border: none;
+  border-radius: 50px;
+  font-size: 40px;
+  font-family: "Montserrat", sans-serif;
+  height: 4.4rem;
+  width: 20rem;
+  position: relative;
+  margin: auto;
+}
+
+.hero article .btn a span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-color: Black;
+  border: 1px solid transparent;
+  z-index: 2;
+}
+
+.hero article .btn a {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  color: black;
+}
+
+.hero article .btn a:after {
+  content: "";
+  position: absolute;
+  border-radius: 50px;
+  bottom: -5px;
+  right: -5px;
+  width: 100%;
+  height: 100%;
+  background-color: Black;
+  z-index: -1;
+}
+
+/*プロフィール*/
+.about {
+  background-color: white;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.about .profile-container {
+  width: 1004px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.about .profile-container .card {
+  width: clamp(223px, 70vw, 340px);
+  padding: 6rem 0 8rem 0;
+}
+
+.about .profile-container .card .name {
+  font-size: 32px;
+  padding-bottom: 1rem;
+}
+
+.about .profile-container .card ul {
+  padding-top: 4rem;
+}
+
+.about .profile-container .card ul,
+.about .profile-container .card li,
+.about .profile-container .card .photo {
+  width: 100%;
+}
+
+.about .profile-container .card .photo {
+  width: clamp(246px, 70vw, 340px);
+  margin: auto 0;
+  border-radius: 50%;
+}
+
+.about .profile-container .card li:nth-child(2) {
+  padding-bottom: 2rem;
+}
+
+.about .profile-container .card li:nth-child(3) {
+  padding-bottom: 1rem;
+}
+
+article .articl-titel {
+  position: relative;
+}
+
+article .articl-titel::after {
+  content: "";
+  position: absolute;
+  border-left: 0.4rem solid;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  width: 0;
+  height: 100%;
+}
+
+article .articl-titel::before {
+  content: "";
+  position: absolute;
+  border-left: 0.4rem solid;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  width: 0;
+  height: 100%;
+}
+
+article .articl-titel::after, article .articl-titel::before {
+  color: white;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero article {
+    margin: 8rem auto;
+  }
+  .hero article .book-info {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .hero article .book-info .book-discription {
+    margin: 2rem 0rem;
+  }
+  .hero article .book-info .btn {
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+  }
+  .hero .about .profile-container {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
 }
 
 header {
   min-height: 10vh;
-  padding: 24px 0;
+  padding: 30px 0;
 }
 
 header .logo {
   width: 100%;
   margin: auto;
+}
+
+footer .footer-info {
+  margin: auto;
+  min-height: 20vh;
+  width: 408px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+footer .footer-info p {
+  display: block;
+}
+
+@media screen and (max-width: 400px) {
+  .footer-info {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=style.css.map */
