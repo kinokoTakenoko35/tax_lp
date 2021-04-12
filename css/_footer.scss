@@ -1,0 +1,19 @@
+footer {
+  .footer-info {
+    margin: auto;
+    min-height: 20vh;
+    width: 408px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    p {
+      display: block;
+    }
+  }
+}
+
+@media screen and(max-width: 400px) {
+  .footer-info {
+    width: 100%;
+  }
+}

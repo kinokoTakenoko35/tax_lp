@@ -2,11 +2,32 @@ main {
   font-family: fot-tsukubrdgothic-std, sans-serif;
   font-weight: 700;
   font-style: normal;
+  .logo-container {
+    margin-bottom: 4rem;
+  }
+
   .title-text {
-    font-size: 80px;
+    font-size: #{"clamp(1.625rem, 0.2265rem + 5.9669vw, 5rem)"};
     span {
       display: inline-block;
       background-color: white;
+      padding: 50px;
+      &:nth-child(1) {
+        margin-bottom: 26px;
+      }
+    }
+  }
+  .down-arrow {
+    position: absolute;
+    left: 45%;
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title-text {
+    span {
+      padding: 20px !important;
     }
   }
 }

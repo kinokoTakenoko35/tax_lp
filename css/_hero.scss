@@ -1,20 +1,230 @@
-.sub-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 50px;
+.hero {
+  padding-top: 30%;
+  .sub-title {
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-family: "Montserrat", sans-serif;
+  }
+  .score-container {
+    border: 0.6rem solid white;
+    border-radius: 15px;
+    padding: 4rem 2rem;
+    .score {
+      /*line-heightで疑似要素にかぶらないようにする*/
+      line-height: 1.2;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        /*border を斜めにする*/
+        transform: skewX(-45deg);
+        background-image: repeating-linear-gradient(
+          -90deg,
+          #707070,
+          #707070 2px,
+          transparent 0,
+          transparent 6px
+        );
+        width: 44%;
+        height: 2%;
+      }
+      .numerical {
+        /*文字列補間（CSS変数と同様）を使用して単位をMIXして使用できるようにする*/
+        font-size: #{"clamp(5rem, 2.9282rem + 8.8398vw, 10rem)"};
+      }
+      .point {
+        font-size: #{"clamp(3.125rem, 1.8301rem + 5.5249vw, 6.25rem)"};
+      }
+    }
+    .discription {
+      margin: 0 auto;
+      width: 90%;
+      line-height: 2rem;
+    }
+  }
+  article {
+    margin: 8rem 0;
+    .articl-titel {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .book-info {
+      display: grid;
+      /* 2:1 の割合でレイアウト */
+      grid-template-columns: 1fr 2fr;
+      justify-content: center;
+      .book-img {
+        grid-row: span 3;
+      }
+      .book-img {
+        display: flex;
+        justify-self: center;
+        align-items: center;
+        position: relative;
+        z-index: -1;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          top: -10px;
+          right: -10px;
+          width: 100%;
+          height: 100%;
+          background-color: black;
+          z-index: -1;
+        }
+      }
+
+      .book-discription {
+        grid-row: span 2;
+        margin: 0 2rem;
+        //font-size: 20px;
+      }
+    }
+    button {
+      border: none;
+      border-radius: 50px;
+      font-size: 40px;
+      font-family: "Montserrat", sans-serif;
+      height: 4.4rem;
+      width: 20rem;
+      position: relative;
+      margin: auto;
+    }
+    .btn a span {
+      display: flex;
+      justify-content: center;
+      border-radius: 50px;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-color: Black;
+      border: 1px solid transparent;
+      z-index: 2;
+    }
+    .btn a {
+      font-family: "Montserrat", sans-serif;
+      text-decoration: none;
+      color: black;
+      &:after {
+        content: "";
+        position: absolute;
+        border-radius: 50px;
+        bottom: -5px;
+        right: -5px;
+        width: 100%;
+        height: 100%;
+        background-color: Black;
+        z-index: -1;
+      }
+    }
+  }
 }
-.score-container {
-  border: solid white;
-  border-radius: 15px;
+
+/*プロフィール*/
+.about {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  .profile-container {
+    width: 1004px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    .card {
+      width: clamp(223px, 70vw, 340px);
+      padding: 6rem 0 8rem 0;
+      .name {
+        font-size: 32px;
+        padding-bottom: 1rem;
+      }
+      ul {
+        padding-top: 4rem;
+      }
+      ul,
+      li,
+      .photo {
+        width: 100%;
+      }
+      .photo {
+        width: clamp(246px, 70vw, 340px);
+        margin: auto 0;
+        border-radius: 50%;
+      }
+      li:nth-child(2) {
+        padding-bottom: 2rem;
+      }
+      li:nth-child(3) {
+        padding-bottom: 1rem;
+      }
+    }
+  }
+}
+
+@mixin border {
+  color: white;
+  border-radius: 10px;
 }
 
 article {
-  h3 {
-    font-size: 80px;
+  .articl-titel {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      border-left: 0.4rem solid;
+      transform: rotate(30deg);
+      width: 0;
+      height: 100%;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      border-left: 0.4rem solid;
+      transform: rotate(-30deg);
+      width: 0;
+      height: 100%;
+    }
+    &::after,
+    &::before {
+      @include border;
+    }
   }
-  &::after,
-  &::before {
-    content: "";
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    article {
+      margin: 8rem auto;
+      .book-info {
+        grid-template-columns: 1fr;
+        .book-discription {
+          margin: 2rem 0rem;
+        }
+        .btn {
+          height: 100%;
+          width: 100%;
+          padding: 1rem;
+        }
+      }
+    }
+    .about {
+      .profile-container {
+        flex-wrap: wrap;
+      }
+    }
   }
 }
