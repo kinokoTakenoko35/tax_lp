@@ -1,11 +1,14 @@
 .hero {
-  padding-top: 30%;
+  h2 {
+    font-size: $sub-title;
+  }
   .sub-title {
+    margin-top: 9rem;
     display: flex;
     margin-bottom: 2rem;
     justify-content: center;
     align-items: center;
-    font-size: 50px;
+    font-size: $sub-title;
     font-family: "Montserrat", sans-serif;
   }
   .score-container {
@@ -37,20 +40,22 @@
       .numerical {
         /*文字列補間（CSS変数と同様）を使用して単位をMIXして使用できるようにする*/
         font-size: #{"clamp(5rem, 2.9282rem + 8.8398vw, 10rem)"};
+        margin-bottom: 2rem;
       }
       .point {
         font-size: #{"clamp(3.125rem, 1.8301rem + 5.5249vw, 6.25rem)"};
       }
     }
     .discription {
-      margin: 0 auto;
-      width: 90%;
+      margin: 2rem auto 0rem;
+      @include width-clamp(255px, 50vw, 1004px);
       line-height: 2rem;
     }
   }
   article {
     margin: 8rem 0;
     .articl-titel {
+      font-size: $section-atricle;
       text-align: center;
       margin-bottom: 4rem;
     }
@@ -87,14 +92,12 @@
       .book-discription {
         grid-row: span 2;
         margin: 0 2rem;
-        //font-size: 20px;
       }
     }
     button {
       border: none;
       border-radius: 50px;
       font-size: 40px;
-      font-family: "Montserrat", sans-serif;
       height: 4.4rem;
       width: 20rem;
       position: relative;
@@ -145,7 +148,7 @@
     justify-content: space-evenly;
     align-items: center;
     .card {
-      width: clamp(223px, 70vw, 340px);
+      @include width-clamp(223px, 70vw, 340px);
       padding: 6rem 0 8rem 0;
       .name {
         font-size: 32px;
@@ -160,7 +163,7 @@
         width: 100%;
       }
       .photo {
-        width: clamp(246px, 70vw, 340px);
+        @include width-clamp(246px, 70vw, 340px);
         margin: auto 0;
         border-radius: 50%;
       }

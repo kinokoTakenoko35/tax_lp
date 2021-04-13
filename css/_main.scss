@@ -7,7 +7,7 @@ main {
   }
 
   .title-text {
-    font-size: #{"clamp(1.625rem, 0.2265rem + 5.9669vw, 5rem)"};
+    font-size: $section-title;
     span {
       display: inline-block;
       background-color: white;
@@ -19,8 +19,10 @@ main {
   }
   .down-arrow {
     position: absolute;
-    left: 45%;
+    left: 50%;
     margin-top: 3rem;
+    /*左右きっちり中央寄せ*/
+    transform: translate(-50%, 0);
   }
 }
 
