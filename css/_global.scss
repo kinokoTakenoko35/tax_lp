@@ -12,17 +12,14 @@ section {
   margin: 0 auto;
 }
 
-/* 第一引数で基準となる画面幅のフォントサイズ、第二引数で基準となる画面幅を入力 */
-// body {
-//   font-size: calc(100vw / 50);
-// }
-
-span,
-h2,
-.articl-titel {
-  font-size: calc(100vw / 15);
-}
-
 .bill-icon {
   width: calc(100vw / 10);
+}
+/* フォントサイズ */
+$section-title: #{"clamp(1.625rem, 0.2265rem + 5.9669vw, 5rem)"};
+$section-atricle: #{"clamp(1.625rem, 0.2265rem + 5.9669vw, 5rem)"};
+$sub-title: calc(100vw / 25);
+
+@mixin width-clamp($lower, $view, $upper) {
+  width: clamp($lower, $view, $upper);
 }

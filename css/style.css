@@ -148,17 +148,11 @@ section {
   margin: 0 auto;
 }
 
-/* 第一引数で基準となる画面幅のフォントサイズ、第二引数で基準となる画面幅を入力 */
-span,
-h2,
-.articl-titel {
-  font-size: calc(100vw / 15);
-}
-
 .bill-icon {
   width: calc(100vw / 10);
 }
 
+/* フォントサイズ */
 main {
   font-family: fot-tsukubrdgothic-std, sans-serif;
   font-weight: 700;
@@ -185,8 +179,11 @@ main .title-text span:nth-child(1) {
 
 main .down-arrow {
   position: absolute;
-  left: 45%;
+  left: 50%;
   margin-top: 3rem;
+  /*左右きっちり中央寄せ*/
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
 }
 
 @media screen and (max-width: 768px) {
@@ -195,11 +192,12 @@ main .down-arrow {
   }
 }
 
-.hero {
-  padding-top: 30%;
+.hero h2 {
+  font-size: calc(100vw / 25);
 }
 
 .hero .sub-title {
+  margin-top: 9rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -210,7 +208,7 @@ main .down-arrow {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 50px;
+  font-size: calc(100vw / 25);
   font-family: "Montserrat", sans-serif;
 }
 
@@ -249,6 +247,7 @@ main .down-arrow {
 .hero .score-container .score .numerical {
   /*文字列補間（CSS変数と同様）を使用して単位をMIXして使用できるようにする*/
   font-size: clamp(5rem, 2.9282rem + 8.8398vw, 10rem);
+  margin-bottom: 2rem;
 }
 
 .hero .score-container .score .point {
@@ -256,8 +255,8 @@ main .down-arrow {
 }
 
 .hero .score-container .discription {
-  margin: 0 auto;
-  width: 90%;
+  margin: 2rem auto 0rem;
+  width: clamp(255px, 50vw, 1004px);
   line-height: 2rem;
 }
 
@@ -266,6 +265,7 @@ main .down-arrow {
 }
 
 .hero article .articl-titel {
+  font-size: clamp(1.625rem, 0.2265rem + 5.9669vw, 5rem);
   text-align: center;
   margin-bottom: 4rem;
 }
@@ -322,7 +322,6 @@ main .down-arrow {
   border: none;
   border-radius: 50px;
   font-size: 40px;
-  font-family: "Montserrat", sans-serif;
   height: 4.4rem;
   width: 20rem;
   position: relative;
