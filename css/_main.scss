@@ -15,6 +15,15 @@ main {
       &:nth-child(1) {
         margin-bottom: 26px;
       }
+      /*media queryは入れ子にする*/
+      @media screen and (max-width: 768px) {
+        .title-text {
+          /*deleted import*/
+          span {
+            padding: 20px;
+          }
+        }
+      }
     }
   }
   .down-arrow {
@@ -23,13 +32,5 @@ main {
     margin-top: 3rem;
     /*左右きっちり中央寄せ*/
     transform: translate(-50%, 0);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .title-text {
-    span {
-      padding: 20px !important;
-    }
   }
 }
