@@ -9,12 +9,7 @@ footer {
     p {
       display: block;
     }
-  }
-}
-
-@media screen and (max-width: 400px) {
-  footer {
-    .footer-info {
+    @media screen and (max-width: 400px) {
       width: 100%;
     }
   }

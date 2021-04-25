@@ -171,10 +171,20 @@ main .title-text span {
   display: inline-block;
   background-color: white;
   padding: 50px;
+  /*media queryは入れ子にする*/
 }
 
 main .title-text span:nth-child(1) {
   margin-bottom: 26px;
+}
+
+@media screen and (max-width: 768px) {
+  main .title-text span .title-text {
+    /*deleted import*/
+  }
+  main .title-text span .title-text span {
+    padding: 20px;
+  }
 }
 
 main .down-arrow {
@@ -184,12 +194,6 @@ main .down-arrow {
   /*左右きっちり中央寄せ*/
   -webkit-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
-}
-
-@media screen and (max-width: 768px) {
-  .title-text span {
-    padding: 20px !important;
-  }
 }
 
 .hero h2 {
@@ -264,10 +268,47 @@ main .down-arrow {
   margin: 8rem 0;
 }
 
+@media screen and (max-width: 768px) {
+  .hero article {
+    margin: 8rem auto;
+  }
+}
+
 .hero article .articl-titel {
   font-size: clamp(1.625rem, 0.2265rem + 5.9669vw, 5rem);
   text-align: center;
   margin-bottom: 4rem;
+  position: relative;
+  /*topとleft(right)の指定*/
+}
+
+.hero article .articl-titel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-left: 0.4rem solid;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  width: 0;
+  height: 100%;
+}
+
+.hero article .articl-titel::before {
+  content: "";
+  position: absolute;
+  border-left: 0.4rem solid;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+}
+
+.hero article .articl-titel::after, .hero article .articl-titel::before {
+  color: white;
+  border-radius: 10px;
 }
 
 .hero article .book-info {
@@ -279,6 +320,13 @@ main .down-arrow {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .hero article .book-info {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
 }
 
 .hero article .book-info .book-img {
@@ -318,6 +366,12 @@ main .down-arrow {
   margin: 0 2rem;
 }
 
+@media screen and (max-width: 768px) {
+  .hero article .book-info .book-discription {
+    margin: 2rem 0rem;
+  }
+}
+
 .hero article .btn {
   display: block;
   background-color: white;
@@ -338,6 +392,13 @@ main .down-arrow {
   height: 100%;
   background-color: Black;
   z-index: -1;
+}
+
+@media screen and (max-width: 768px) {
+  .hero article .btn {
+    height: 100%;
+    padding: 1rem;
+  }
 }
 
 .hero article .btn-text {
@@ -394,6 +455,13 @@ main .down-arrow {
           align-items: center;
 }
 
+@media screen and (max-width: 768px) {
+  .about .profile-container {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
 .about .profile-container .card {
   width: clamp(223px, 70vw, 340px);
   padding: 6rem 0 8rem 0;
@@ -426,61 +494,6 @@ main .down-arrow {
 
 .about .profile-container .card li:nth-child(3) {
   padding-bottom: 1rem;
-}
-
-article .articl-titel {
-  position: relative;
-  /*topとleft(right)の指定*/
-}
-
-article .articl-titel::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-left: 0.4rem solid;
-  -webkit-transform: rotate(30deg);
-          transform: rotate(30deg);
-  width: 0;
-  height: 100%;
-}
-
-article .articl-titel::before {
-  content: "";
-  position: absolute;
-  border-left: 0.4rem solid;
-  -webkit-transform: rotate(-30deg);
-          transform: rotate(-30deg);
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-}
-
-article .articl-titel::after, article .articl-titel::before {
-  color: white;
-  border-radius: 10px;
-}
-
-@media screen and (max-width: 768px) {
-  .hero article {
-    margin: 8rem auto;
-  }
-  .hero article .book-info {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-  }
-  .hero article .book-info .book-discription {
-    margin: 2rem 0rem;
-  }
-  .hero article .book-info .btn {
-    height: 100%;
-    padding: 1rem;
-  }
-  .hero .about .profile-container {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
 }
 
 header {
