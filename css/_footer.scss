@@ -12,8 +12,10 @@ footer {
   }
 }
 
-@media screen and(max-width: 400px) {
-  .footer-info {
-    width: 100%;
+@media screen and (max-width: 400px) {
+  footer {
+    .footer-info {
+      width: 100%;
+    }
   }
 }

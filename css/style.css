@@ -318,42 +318,17 @@ main .down-arrow {
   margin: 0 2rem;
 }
 
-.hero article button {
-  border: none;
+.hero article .btn {
+  display: block;
+  background-color: white;
   border-radius: 50px;
-  font-size: 40px;
   height: 4.4rem;
   width: 20rem;
   position: relative;
   margin: auto;
 }
 
-.hero article .btn a span {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border-radius: 50px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-color: Black;
-  border: 1px solid transparent;
-  z-index: 2;
-}
-
-.hero article .btn a {
-  font-family: "Montserrat", sans-serif;
-  text-decoration: none;
-  color: black;
-}
-
-.hero article .btn a:after {
+.hero article .btn:after {
   content: "";
   position: absolute;
   border-radius: 50px;
@@ -363,6 +338,33 @@ main .down-arrow {
   height: 100%;
   background-color: Black;
   z-index: -1;
+}
+
+.hero article .btn-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 40px;
+  border: none;
+  color: black;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-color: Black;
+  border: 1px solid transparent;
+  z-index: 2;
 }
 
 /*プロフィール*/
@@ -428,11 +430,14 @@ main .down-arrow {
 
 article .articl-titel {
   position: relative;
+  /*topとleft(right)の指定*/
 }
 
 article .articl-titel::after {
   content: "";
   position: absolute;
+  top: 0;
+  right: 0;
   border-left: 0.4rem solid;
   -webkit-transform: rotate(30deg);
           transform: rotate(30deg);
@@ -446,6 +451,8 @@ article .articl-titel::before {
   border-left: 0.4rem solid;
   -webkit-transform: rotate(-30deg);
           transform: rotate(-30deg);
+  top: 0;
+  left: 0;
   width: 0;
   height: 100%;
 }
@@ -468,7 +475,6 @@ article .articl-titel::after, article .articl-titel::before {
   }
   .hero article .book-info .btn {
     height: 100%;
-    width: 100%;
     padding: 1rem;
   }
   .hero .about .profile-container {
@@ -506,7 +512,7 @@ footer .footer-info p {
 }
 
 @media screen and (max-width: 400px) {
-  .footer-info {
+  footer .footer-info {
     width: 100%;
   }
 }
